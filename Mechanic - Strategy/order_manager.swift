@@ -25,7 +25,7 @@ class OrderManager {
   func generateOrderForMechanic(mechanic: Mechanic, parts: [Part], carType: CarType) -> Order {
     let orderId = currentOrderId + 1
     let order = Order(orderId: orderId, parts: parts, carType: carType)
-    MechanicOrderDataProvider.instace.addMechanicOrder(order, mechanic: mechanic)
+    MechanicOrderDataProvider.instace.addMechanicOrder(order: order, mechanic: mechanic)
     currentOrderId = orderId
     return order
   }
@@ -33,11 +33,11 @@ class OrderManager {
   func fulfillOrder(order: Order) -> Bool {
     switch order.carType {
     case .Domestic:
-      return acmeStrategy.fulfillOrder(order)
+        return acmeStrategy.fulfillOrder(order: order)
     case .Asian:
-      return partsnstuffStrategy.fulfillOrder(order)
+        return partsnstuffStrategy.fulfillOrder(order: order)
     case .European:
-      return autopartsStrategy.fulfillOrder(order)
+        return autopartsStrategy.fulfillOrder(order: order)
 
     }
   }

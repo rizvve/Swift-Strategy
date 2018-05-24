@@ -11,9 +11,9 @@ import Foundation
 class PartsNStuffStrategy: OrderStrategy {
 
   func fulfillOrder(order: Order) -> Bool {
-    let mechanicId = MechanicOrderDataProvider.instace.getMechanicIdFromOrderId(order.orderId)
+    let mechanicId = MechanicOrderDataProvider.instace.getMechanicIdFromOrderId(orderId: order.orderId)
     if let mechanicId = mechanicId {
-      if PartsNStuff.instance.fulfillOrder(order, mechanicId: mechanicId) {
+        if PartsNStuff.instance.fulfillOrder(order: order, mechanicId: mechanicId) {
         print("PartsNStuff strategy worked correctly, order fulfilled")
         order.orderFulfilled()
         return true

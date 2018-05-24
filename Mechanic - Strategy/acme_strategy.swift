@@ -11,9 +11,9 @@ import Foundation
 class ACMEStrategy: OrderStrategy {
 
   func fulfillOrder(order: Order) -> Bool {
-    let signature = PartsSupervisor.instance.getSupervisorSignatureOnOrder(order)
-    if ACME.instance.addToApprovedOrder(order, partsSupervisorSignature: signature) {
-      if ACME.instance.fulfillOrder(order) {
+    let signature = PartsSupervisor.instance.getSupervisorSignatureOnOrder(order: order)
+    if ACME.instance.addToApprovedOrder(order: order, partsSupervisorSignature: signature) {
+        if ACME.instance.fulfillOrder(order: order) {
         print("ACME strategy worked correctly, order fulfilled")
         order.orderFulfilled()
         return true

@@ -12,8 +12,8 @@ class AutoPartsStrategy: OrderStrategy {
 
   func fulfillOrder(order: Order) -> Bool {
     let toBeVerified = AutoPart.instance.getVerifyingNumber()
-    if AutoPart.instance.authenticateOrder(order, response: toBeVerified % 2 == 0) {
-      if AutoPart.instance.fulfillOrder(order) {
+    if AutoPart.instance.authenticateOrder(order: order, response: toBeVerified % 2 == 0) {
+        if AutoPart.instance.fulfillOrder(order: order) {
         print("Auto part strategy worked correctly, order fulfilled")
         order.orderFulfilled()
         return true
